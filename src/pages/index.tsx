@@ -2,10 +2,12 @@ import styles from "./index.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import { api } from "~/utils/api";
-import { SignIn } from "@clerk/nextjs";
+import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+
+  const user = useUser();
 
   return (
     <>
@@ -20,7 +22,8 @@ export default function Home() {
         </h1>
         <button className="btn btn-primary">button</button>
         <button className="btn btn-secondary">button</button>
-        <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+        {!user.isSignedIn && <SignInButton />}
+        {!user.isSignedIn && <SignInButton />}
       </main>
     </>
   );
