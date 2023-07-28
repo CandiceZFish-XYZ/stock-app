@@ -2,16 +2,8 @@ import React from "react";
 import AppHeader from "~/components/AppHeader";
 import SideNavTab from "~/components/SideNavTab";
 import SearchBar from "~/components/SearchBar";
-// import StockGraph from "~/components/StockGraph";
 import Metrics from "~/components/Metrics";
 import Results from "~/components/Results";
-import StockDataProvider from "~/providers/StockDataProvider";
-
-import dynamic from "next/dynamic";
-
-const StockGraph = dynamic(() => import("~/components/StockGraph"), {
-  ssr: false,
-});
 
 export default function Home() {
   return (
@@ -25,16 +17,13 @@ export default function Home() {
         </div>
         <main className="col-10 bg-dark">
           <div>hi</div>
-          <StockDataProvider>
-            <div className="p-3 vstack gap-4">
-              <SearchBar />
-              <StockGraph />
-              <div className="row">
-                <Metrics />
-                <Results />
-              </div>
+          <div className="p-3 vstack gap-4">
+            <SearchBar />
+            <div className="row">
+              <Metrics />
+              <Results />
             </div>
-          </StockDataProvider>
+          </div>
         </main>
       </div>
     </div>

@@ -8,13 +8,16 @@ export default function Metrics() {
   const [dDelta, setDDelta] = useState<number | undefined>(undefined);
   const [threshold, setThreshold] = useState<number>(5);
 
-  const ApplyBacktest = (e) => {
+  const ApplyBacktest = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    // TODO to be completed
     e.preventDefault();
     console.log("===Applying backtest with following metrics: ===");
     console.log("startDate: ", startDate);
     console.log("endDate: ", endDate);
     console.log("mean: ", mean);
-    console.log("percnt Delta: ", pDelta);
+    console.log("percent Delta: ", pDelta);
     console.log("dollar Delta: ", dDelta);
     console.log("preset threshold: ", threshold);
     console.log("===End metrics===");
@@ -49,7 +52,7 @@ export default function Metrics() {
               }
               onChange={(e) =>
                 setStartDate(
-                  e.target.value === "" ? undefined : new Date(e.target.value)
+                  e.target.value === "" ? undefined : new Date(e.target.value),
                 )
               }
             />
@@ -66,7 +69,7 @@ export default function Metrics() {
               }
               onChange={(e) =>
                 setEndDate(
-                  e.target.value === "" ? undefined : new Date(e.target.value)
+                  e.target.value === "" ? undefined : new Date(e.target.value),
                 )
               }
             />
@@ -87,7 +90,9 @@ export default function Metrics() {
               value={mean === undefined ? "" : dDelta}
               onChange={(e) =>
                 setMean(
-                  e.target.value === "" ? undefined : parseFloat(e.target.value)
+                  e.target.value === ""
+                    ? undefined
+                    : parseFloat(e.target.value),
                 )
               }
             />
@@ -105,10 +110,12 @@ export default function Metrics() {
               className="form-control"
               aria-label="percent delta"
               id="percntDelta"
-              value={pDelta === undefined ? "" : pDelta}
+              value={pDelta ?? ""}
               onChange={(e) =>
                 setPDelta(
-                  e.target.value === "" ? undefined : parseFloat(e.target.value)
+                  e.target.value === ""
+                    ? undefined
+                    : parseFloat(e.target.value),
                 )
               }
             />
@@ -126,10 +133,12 @@ export default function Metrics() {
               className="form-control"
               aria-label="dollar delta"
               id="dollarDelta"
-              value={dDelta === undefined ? "" : dDelta}
+              value={dDelta ?? ""}
               onChange={(e) =>
                 setDDelta(
-                  e.target.value === "" ? undefined : parseFloat(e.target.value)
+                  e.target.value === ""
+                    ? undefined
+                    : parseFloat(e.target.value),
                 )
               }
             />
